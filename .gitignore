@@ -1,0 +1,8 @@
+/backend/bin/
+/backend/obj/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
