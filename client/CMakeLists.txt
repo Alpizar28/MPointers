@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.10)
-project(mq_client)
+project(Client)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Incluyendo el directorio donde se encuentra la librería CPR
-include_directories(/usr/local/include)
+find_package(cpr REQUIRED)
 
-# Agregando el ejecutable
-add_executable(mq_client src/main.cpp)
+add_executable(client src/main.cpp)
 
-# Vinculando las librerías necesarias
-target_link_libraries(mq_client cpr curl)
+target_include_directories(client PRIVATE include)
+
+target_link_libraries(client PRIVATE cpr::cpr)

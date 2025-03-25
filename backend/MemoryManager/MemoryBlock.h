@@ -1,31 +1,29 @@
 #ifndef MEMORYBLOCK_H
 #define MEMORYBLOCK_H
 
-#include <cstddef>  // Para size_t
+#include <cstddef>
+#include <atomic>
 
 class MemoryBlock {
 private:
-    void* data;  // Puntero a los datos
-    size_t size; // Tamaño del bloque de memoria
-    int refCount; // Contador de referencias
+    void* data;
+    size_t size;
+    std::atomic<int> refCount;
+    int id;
+    static std::atomic<int> nextId;
 
 public:
-    // Constructor
-    MemoryBlock(size_t s);
-
-    // Destructor
+    MemoryBlock(size_t s, int blockId = 0);
     ~MemoryBlock();
-
-    // Método para obtener el tamaño del bloque de memoria
+    
+    // Solo declaraciones (sin implementaciones)
+    void setData(void* ptr);
+    void* getData() const;
     size_t getSize() const;
-
-    // Método para obtener la dirección de los datos
-    void* getData();
-
-    // Métodos para manejar el conteo de referencias
+    int getId() const;
+    int getRefCount() const;
     void increaseRefCount();
     void decreaseRefCount();
-    int getRefCount() const;
 };
 
-#endif // MEMORYBLOCK_H
+#endif
