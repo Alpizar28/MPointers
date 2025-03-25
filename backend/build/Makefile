@@ -57,10 +57,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pablo/Escritorio/MessageQueueProject/client
+CMAKE_SOURCE_DIR = /home/pablo/Escritorio/MessageQueueProject/backend
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pablo/Escritorio/MessageQueueProject/client/build
+CMAKE_BINARY_DIR = /home/pablo/Escritorio/MessageQueueProject/backend/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pablo/Escritorio/MessageQueueProject/client/build/CMakeFiles /home/pablo/Escritorio/MessageQueueProject/client/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pablo/Escritorio/MessageQueueProject/backend/build/CMakeFiles /home/pablo/Escritorio/MessageQueueProject/backend/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pablo/Escritorio/MessageQueueProject/client/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pablo/Escritorio/MessageQueueProject/backend/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,24 +117,72 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named client
+# Target rules for targets named server
 
 # Build rule for target.
-client: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 client
-.PHONY : client
+server: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 server
+.PHONY : server
 
 # fast build rule for target.
-client/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
-.PHONY : client/fast
+server/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
+.PHONY : server/fast
+
+MemoryManager/MemoryBlock.o: MemoryManager/MemoryBlock.cpp.o
+.PHONY : MemoryManager/MemoryBlock.o
+
+# target to build an object file
+MemoryManager/MemoryBlock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/MemoryManager/MemoryBlock.cpp.o
+.PHONY : MemoryManager/MemoryBlock.cpp.o
+
+MemoryManager/MemoryBlock.i: MemoryManager/MemoryBlock.cpp.i
+.PHONY : MemoryManager/MemoryBlock.i
+
+# target to preprocess a source file
+MemoryManager/MemoryBlock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/MemoryManager/MemoryBlock.cpp.i
+.PHONY : MemoryManager/MemoryBlock.cpp.i
+
+MemoryManager/MemoryBlock.s: MemoryManager/MemoryBlock.cpp.s
+.PHONY : MemoryManager/MemoryBlock.s
+
+# target to generate assembly for a file
+MemoryManager/MemoryBlock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/MemoryManager/MemoryBlock.cpp.s
+.PHONY : MemoryManager/MemoryBlock.cpp.s
+
+MemoryManager/MemoryManager.o: MemoryManager/MemoryManager.cpp.o
+.PHONY : MemoryManager/MemoryManager.o
+
+# target to build an object file
+MemoryManager/MemoryManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/MemoryManager/MemoryManager.cpp.o
+.PHONY : MemoryManager/MemoryManager.cpp.o
+
+MemoryManager/MemoryManager.i: MemoryManager/MemoryManager.cpp.i
+.PHONY : MemoryManager/MemoryManager.i
+
+# target to preprocess a source file
+MemoryManager/MemoryManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/MemoryManager/MemoryManager.cpp.i
+.PHONY : MemoryManager/MemoryManager.cpp.i
+
+MemoryManager/MemoryManager.s: MemoryManager/MemoryManager.cpp.s
+.PHONY : MemoryManager/MemoryManager.s
+
+# target to generate assembly for a file
+MemoryManager/MemoryManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/MemoryManager/MemoryManager.cpp.s
+.PHONY : MemoryManager/MemoryManager.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -142,7 +190,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -150,8 +198,32 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/memory_server.o: src/memory_server.cpp.o
+.PHONY : src/memory_server.o
+
+# target to build an object file
+src/memory_server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/memory_server.cpp.o
+.PHONY : src/memory_server.cpp.o
+
+src/memory_server.i: src/memory_server.cpp.i
+.PHONY : src/memory_server.i
+
+# target to preprocess a source file
+src/memory_server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/memory_server.cpp.i
+.PHONY : src/memory_server.cpp.i
+
+src/memory_server.s: src/memory_server.cpp.s
+.PHONY : src/memory_server.s
+
+# target to generate assembly for a file
+src/memory_server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/memory_server.cpp.s
+.PHONY : src/memory_server.cpp.s
 
 # Help Target
 help:
@@ -161,10 +233,19 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... client"
+	@echo "... server"
+	@echo "... MemoryManager/MemoryBlock.o"
+	@echo "... MemoryManager/MemoryBlock.i"
+	@echo "... MemoryManager/MemoryBlock.s"
+	@echo "... MemoryManager/MemoryManager.o"
+	@echo "... MemoryManager/MemoryManager.i"
+	@echo "... MemoryManager/MemoryManager.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/memory_server.o"
+	@echo "... src/memory_server.i"
+	@echo "... src/memory_server.s"
 .PHONY : help
 
 

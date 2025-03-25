@@ -1,43 +1,105 @@
 #include "MemoryManager.h"
-#include <algorithm>  // Para std::find
-#include <iostream>   // Para imprimir mensajes si es necesario
+#include <cstdlib>
+#include <algorithm>
+#include <stdexcept>
+#include <cstring>
+#include <fstream>
+#include <filesystem>
 
-// Constructor de MemoryManager
-MemoryManager::MemoryManager() {
-    // Inicialización del gestor de memoria, si es necesario
+
+MemoryManager::MemoryManager(size_t sizeBytes, const std::string& dumpPath) : 
+    poolSize(sizeBytes), usedMemory(0), dumpFolder(dumpPath) {
+    memoryPool = malloc(poolSize);
+    if (!memoryPool) {
+        throw std::runtime_error("Failed to allocate memory pool");
+    }
+    
+    // Crear directorio de dumps si no existe
+    if (!dumpFolder.empty()) {
+        std::filesystem::create_directories(dumpFolder);
+    }
 }
 
-// Destructor de MemoryManager
 MemoryManager::~MemoryManager() {
-    // Limpiar los bloques de memoria, si es necesario
+    std::lock_guard<std::mutex> lock(mtx);
     for (auto block : memoryBlocks) {
-        delete block;  // Liberar cada bloque de memoria
+        delete block;
     }
-    memoryBlocks.clear();  // Limpiar la lista
+    free(memoryPool);
 }
 
-// Método para asignar un bloque de memoria
-MemoryBlock* MemoryManager::allocateMemory(size_t size) {
-    MemoryBlock* block = new MemoryBlock(size);  // Crear un nuevo bloque de memoria
-    memoryBlocks.push_back(block);  // Almacenar el bloque de memoria
-    return block;
+int MemoryManager::allocateMemory(size_t size) {
+    std::lock_guard<std::mutex> lock(mtx);
+    
+    if (usedMemory + size > poolSize) {
+        throw std::runtime_error("Not enough memory in pool");
+    }
+
+    MemoryBlock* block = new MemoryBlock(size);
+    block->setData(static_cast<char*>(memoryPool) + usedMemory);  // Usa setter
+    usedMemory += size;
+    
+    memoryBlocks.push_back(block);
+    return block->getId();
 }
 
-// Método para liberar un bloque de memoria
-void MemoryManager::deallocateMemory(MemoryBlock* block) {
-    auto it = std::find(memoryBlocks.begin(), memoryBlocks.end(), block);
+void* MemoryManager::getBlockData(int blockId) const {
+    std::lock_guard<std::mutex> lock(mtx);
+    auto it = std::find_if(memoryBlocks.begin(), memoryBlocks.end(),
+        [blockId](MemoryBlock* b) { return b->getId() == blockId; });
+    
     if (it != memoryBlocks.end()) {
-        delete *it;  // Eliminar el bloque de memoria
-        memoryBlocks.erase(it);  // Eliminarlo de la lista
+        return (*it)->getData();
+    }
+    throw std::runtime_error("Block not found");
+}
+
+bool MemoryManager::setBlockData(int blockId, const void* data, size_t size) {
+    std::lock_guard<std::mutex> lock(mtx);
+    auto it = std::find_if(memoryBlocks.begin(), memoryBlocks.end(),
+        [blockId](MemoryBlock* b) { return b->getId() == blockId; });
+
+    if (it != memoryBlocks.end() && (*it)->getSize() >= size) {
+        std::memcpy((*it)->getData(), data, size);
+        return true;
+    }
+    return false;
+}
+
+void MemoryManager::increaseRefCount(int blockId) {
+    std::lock_guard<std::mutex> lock(mtx);
+    auto it = std::find_if(memoryBlocks.begin(), memoryBlocks.end(),
+        [blockId](MemoryBlock* b) { return b->getId() == blockId; });
+    
+    if (it != memoryBlocks.end()) {
+        (*it)->increaseRefCount();
+    } else {
+        throw std::runtime_error("Block not found");
     }
 }
 
-// Método para aumentar el conteo de referencias
-void MemoryManager::increaseRefCount(MemoryBlock* block) {
-    block->increaseRefCount();
+void MemoryManager::decreaseRefCount(int blockId) {
+    std::lock_guard<std::mutex> lock(mtx);
+    auto it = std::find_if(memoryBlocks.begin(), memoryBlocks.end(),
+        [blockId](MemoryBlock* b) { return b->getId() == blockId; });
+    
+    if (it != memoryBlocks.end()) {
+        (*it)->decreaseRefCount();
+        if ((*it)->getRefCount() <= 0) {
+            collectGarbage();
+        }
+    }
 }
 
-// Método para disminuir el conteo de referencias
-void MemoryManager::decreaseRefCount(MemoryBlock* block) {
-    block->decreaseRefCount();
+void MemoryManager::collectGarbage() {
+    memoryBlocks.erase(
+        std::remove_if(memoryBlocks.begin(), memoryBlocks.end(),
+            [](MemoryBlock* b) { 
+                if (b->getRefCount() <= 0) {
+                    delete b;
+                    return true;
+                }
+                return false;
+            }),
+        memoryBlocks.end());
 }

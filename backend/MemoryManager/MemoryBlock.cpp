@@ -1,37 +1,30 @@
 #include "MemoryBlock.h"
-#include <cstdlib>  // Para malloc y free
+#include <iostream>
 
-// Constructor de MemoryBlock
-MemoryBlock::MemoryBlock(size_t s) : size(s), refCount(1) {
-    data = malloc(size);  // Reserva la memoria
+std::atomic<int> MemoryBlock::nextId(1);
+
+MemoryBlock::MemoryBlock(size_t s, int blockId) : 
+    size(s), 
+    refCount(1), 
+    id(blockId > 0 ? blockId : nextId++) {
+    
+    data = malloc(size);
+    if (!data) {
+        throw std::bad_alloc();
+    }
+    std::cout << "Bloque creado (ID: " << id << ", Size: " << size << " bytes)\n";
 }
 
-// Destructor de MemoryBlock
 MemoryBlock::~MemoryBlock() {
-    free(data);  // Libera la memoria
+    free(data);
+    std::cout << "Bloque liberado (ID: " << id << ")\n";
 }
 
-// Método para obtener el tamaño del bloque de memoria
-size_t MemoryBlock::getSize() const {
-    return size;
-}
-
-// Método para obtener la dirección de los datos
-void* MemoryBlock::getData() {
-    return data;
-}
-
-// Aumenta el conteo de referencias
-void MemoryBlock::increaseRefCount() {
-    ++refCount;
-}
-
-// Disminuye el conteo de referencias
-void MemoryBlock::decreaseRefCount() {
-    --refCount;
-}
-
-// Obtiene el conteo de referencias
-int MemoryBlock::getRefCount() const {
-    return refCount;
-}
+// Implementaciones de los métodos
+void MemoryBlock::setData(void* ptr) { data = ptr; }
+void* MemoryBlock::getData() const { return data; }
+size_t MemoryBlock::getSize() const { return size; }
+int MemoryBlock::getId() const { return id; }
+int MemoryBlock::getRefCount() const { return refCount.load(); }
+void MemoryBlock::increaseRefCount() { ++refCount; }
+void MemoryBlock::decreaseRefCount() { --refCount; }

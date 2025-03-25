@@ -1,12 +1,11 @@
-#ifndef GARBAGE_COLLECTOR_H
-#define GARBAGE_COLLECTOR_H
+#ifndef GARBAGECOLLECTOR_H
+#define GARBAGECOLLECTOR_H
 
-#include "MemoryManager.h"
+class MemoryManager;
 
 class GarbageCollector {
 public:
-    // Método para ejecutar el proceso de recolección de basura
     static void collect(MemoryManager& manager);
 };
 
-#endif // GARBAGE_COLLECTOR_H
+#endif
