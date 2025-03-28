@@ -129,6 +129,30 @@ server/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
 .PHONY : server/fast
 
+MemoryManager/GarbageCollector.o: MemoryManager/GarbageCollector.cpp.o
+.PHONY : MemoryManager/GarbageCollector.o
+
+# target to build an object file
+MemoryManager/GarbageCollector.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.o
+.PHONY : MemoryManager/GarbageCollector.cpp.o
+
+MemoryManager/GarbageCollector.i: MemoryManager/GarbageCollector.cpp.i
+.PHONY : MemoryManager/GarbageCollector.i
+
+# target to preprocess a source file
+MemoryManager/GarbageCollector.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.i
+.PHONY : MemoryManager/GarbageCollector.cpp.i
+
+MemoryManager/GarbageCollector.s: MemoryManager/GarbageCollector.cpp.s
+.PHONY : MemoryManager/GarbageCollector.s
+
+# target to generate assembly for a file
+MemoryManager/GarbageCollector.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.s
+.PHONY : MemoryManager/GarbageCollector.cpp.s
+
 MemoryManager/MemoryBlock.o: MemoryManager/MemoryBlock.cpp.o
 .PHONY : MemoryManager/MemoryBlock.o
 
@@ -201,30 +225,6 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/memory_server.o: src/memory_server.cpp.o
-.PHONY : src/memory_server.o
-
-# target to build an object file
-src/memory_server.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/memory_server.cpp.o
-.PHONY : src/memory_server.cpp.o
-
-src/memory_server.i: src/memory_server.cpp.i
-.PHONY : src/memory_server.i
-
-# target to preprocess a source file
-src/memory_server.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/memory_server.cpp.i
-.PHONY : src/memory_server.cpp.i
-
-src/memory_server.s: src/memory_server.cpp.s
-.PHONY : src/memory_server.s
-
-# target to generate assembly for a file
-src/memory_server.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/memory_server.cpp.s
-.PHONY : src/memory_server.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -234,6 +234,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... server"
+	@echo "... MemoryManager/GarbageCollector.o"
+	@echo "... MemoryManager/GarbageCollector.i"
+	@echo "... MemoryManager/GarbageCollector.s"
 	@echo "... MemoryManager/MemoryBlock.o"
 	@echo "... MemoryManager/MemoryBlock.i"
 	@echo "... MemoryManager/MemoryBlock.s"
@@ -243,9 +246,6 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/memory_server.o"
-	@echo "... src/memory_server.i"
-	@echo "... src/memory_server.s"
 .PHONY : help
 
 

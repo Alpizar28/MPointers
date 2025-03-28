@@ -92,8 +92,10 @@ client_EXTERNAL_OBJECTS =
 
 client: CMakeFiles/client.dir/src/main.cpp.o
 client: CMakeFiles/client.dir/build.make
-client: /usr/local/lib/libcpr.so.1.11.2
-client: /usr/local/lib/libcurl.so.4.8.0
+client: /usr/local/lib/libcpr.a
+client: /usr/lib/x86_64-linux-gnu/libcurl.so
+client: /usr/lib/x86_64-linux-gnu/libssl.so
+client: /usr/lib/x86_64-linux-gnu/libcrypto.so
 client: CMakeFiles/client.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/pablo/Escritorio/MessageQueueProject/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable client"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/client.dir/link.txt --verbose=$(VERBOSE)

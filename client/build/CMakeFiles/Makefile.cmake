@@ -11,10 +11,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.29.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.29.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.29.3/CMakeSystem.cmake"
-  "/usr/local/lib/cmake/CURL/CURLConfig.cmake"
-  "/usr/local/lib/cmake/CURL/CURLConfigVersion.cmake"
-  "/usr/local/lib/cmake/CURL/CURLTargets-release.cmake"
-  "/usr/local/lib/cmake/CURL/CURLTargets.cmake"
   "/usr/local/lib/cmake/cpr/cprConfig.cmake"
   "/usr/local/lib/cmake/cpr/cprConfigVersion.cmake"
   "/usr/local/lib/cmake/cpr/cprTargets-noconfig.cmake"
@@ -112,7 +108,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/local/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
   "/usr/local/share/cmake-3.29/Modules/FindPackageMessage.cmake"
   "/usr/local/share/cmake-3.29/Modules/FindPkgConfig.cmake"
-  "/usr/local/share/cmake-3.29/Modules/FindZLIB.cmake"
   "/usr/local/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake"
   "/usr/local/share/cmake-3.29/Modules/Internal/FeatureTesting.cmake"
   "/usr/local/share/cmake-3.29/Modules/Platform/Linux-Determine-CXX.cmake"
@@ -123,6 +118,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/local/share/cmake-3.29/Modules/Platform/Linux.cmake"
   "/usr/local/share/cmake-3.29/Modules/Platform/UnixPaths.cmake"
   "/usr/local/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+  "/usr/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake"
+  "/usr/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake"
+  "/usr/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake"
   )
 
 # The corresponding makefile is:

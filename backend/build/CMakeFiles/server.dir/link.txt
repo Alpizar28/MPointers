@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/server.dir/src/main.cpp.o CMakeFiles/server.dir/MemoryManager/MemoryManager.cpp.o CMakeFiles/server.dir/MemoryManager/MemoryBlock.cpp.o CMakeFiles/server.dir/src/memory_server.cpp.o -o server  /usr/lib/x86_64-linux-gnu/libcpprest.so.2.10 -lpthread -lssl -lcrypto -lstdc++fs
+/usr/bin/c++ CMakeFiles/server.dir/src/main.cpp.o CMakeFiles/server.dir/MemoryManager/MemoryManager.cpp.o CMakeFiles/server.dir/MemoryManager/MemoryBlock.cpp.o CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.o -o server  -lpthread
