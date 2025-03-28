@@ -1,6 +1,16 @@
 #include "GarbageCollector.h"
-#include "MemoryManager.h"
+#include "MemoryBlock.h"
 
-void GarbageCollector::collect(MemoryManager& manager) {
-    manager.collectGarbage();
+GarbageCollector::GarbageCollector(std::unordered_map<int, MemoryBlock*>& table)
+    : memoryTable(table) {}
+
+void GarbageCollector::collect() {
+    for (auto it = memoryTable.begin(); it != memoryTable.end(); ) {
+        if (it->second->getRefCount() <= 0) {
+            delete it->second;
+            it = memoryTable.erase(it);
+        } else {
+            ++it;
+        }
+    }
 }

@@ -111,26 +111,26 @@ CMakeFiles/server.dir/MemoryManager/MemoryBlock.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/server.dir/MemoryManager/MemoryBlock.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pablo/Escritorio/MessageQueueProject/backend/MemoryManager/MemoryBlock.cpp -o CMakeFiles/server.dir/MemoryManager/MemoryBlock.cpp.s
 
-CMakeFiles/server.dir/src/memory_server.cpp.o: CMakeFiles/server.dir/flags.make
-CMakeFiles/server.dir/src/memory_server.cpp.o: /home/pablo/Escritorio/MessageQueueProject/backend/src/memory_server.cpp
-CMakeFiles/server.dir/src/memory_server.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/pablo/Escritorio/MessageQueueProject/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/server.dir/src/memory_server.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/memory_server.cpp.o -MF CMakeFiles/server.dir/src/memory_server.cpp.o.d -o CMakeFiles/server.dir/src/memory_server.cpp.o -c /home/pablo/Escritorio/MessageQueueProject/backend/src/memory_server.cpp
+CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.o: /home/pablo/Escritorio/MessageQueueProject/backend/MemoryManager/GarbageCollector.cpp
+CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/pablo/Escritorio/MessageQueueProject/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.o -MF CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.o.d -o CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.o -c /home/pablo/Escritorio/MessageQueueProject/backend/MemoryManager/GarbageCollector.cpp
 
-CMakeFiles/server.dir/src/memory_server.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/server.dir/src/memory_server.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pablo/Escritorio/MessageQueueProject/backend/src/memory_server.cpp > CMakeFiles/server.dir/src/memory_server.cpp.i
+CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pablo/Escritorio/MessageQueueProject/backend/MemoryManager/GarbageCollector.cpp > CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.i
 
-CMakeFiles/server.dir/src/memory_server.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/memory_server.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pablo/Escritorio/MessageQueueProject/backend/src/memory_server.cpp -o CMakeFiles/server.dir/src/memory_server.cpp.s
+CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pablo/Escritorio/MessageQueueProject/backend/MemoryManager/GarbageCollector.cpp -o CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.s
 
 # Object files for target server
 server_OBJECTS = \
 "CMakeFiles/server.dir/src/main.cpp.o" \
 "CMakeFiles/server.dir/MemoryManager/MemoryManager.cpp.o" \
 "CMakeFiles/server.dir/MemoryManager/MemoryBlock.cpp.o" \
-"CMakeFiles/server.dir/src/memory_server.cpp.o"
+"CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.o"
 
 # External object files for target server
 server_EXTERNAL_OBJECTS =
@@ -138,9 +138,8 @@ server_EXTERNAL_OBJECTS =
 server: CMakeFiles/server.dir/src/main.cpp.o
 server: CMakeFiles/server.dir/MemoryManager/MemoryManager.cpp.o
 server: CMakeFiles/server.dir/MemoryManager/MemoryBlock.cpp.o
-server: CMakeFiles/server.dir/src/memory_server.cpp.o
+server: CMakeFiles/server.dir/MemoryManager/GarbageCollector.cpp.o
 server: CMakeFiles/server.dir/build.make
-server: /usr/lib/x86_64-linux-gnu/libcpprest.so.2.10
 server: CMakeFiles/server.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/pablo/Escritorio/MessageQueueProject/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable server"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/server.dir/link.txt --verbose=$(VERBOSE)

@@ -1,3 +1,15 @@
+# Ignorar compilaciones
+/backend/build/
+/client/build/
+
+/*.zip
+*.o
+*.d
+*.out
+*.log
+*.swp
+*.exe
+.DS_Store
 /backend/bin/
 /backend/obj/
 .vscode/

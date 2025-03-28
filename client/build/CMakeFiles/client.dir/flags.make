@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/pablo/Escritorio/MessageQueueProject/client/include
 
-CXX_FLAGS = -std=gnu++17
+CXX_FLAGS = -std=c++17
 

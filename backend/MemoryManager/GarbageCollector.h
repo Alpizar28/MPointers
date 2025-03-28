@@ -1,11 +1,17 @@
 #ifndef GARBAGECOLLECTOR_H
 #define GARBAGECOLLECTOR_H
 
-class MemoryManager;
+#include <unordered_map>
+
+class MemoryBlock;
 
 class GarbageCollector {
+private:
+    std::unordered_map<int, MemoryBlock*>& memoryTable;
+
 public:
-    static void collect(MemoryManager& manager);
+    GarbageCollector(std::unordered_map<int, MemoryBlock*>& table);
+    void collect();
 };
 
 #endif

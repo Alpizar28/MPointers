@@ -72,7 +72,16 @@
         "csignal": "cpp",
         "regex": "cpp",
         "any": "cpp",
-        "*.dat": "cpp"
+        "*.dat": "cpp",
+        "complex": "cpp",
+        "coroutine": "cpp",
+        "forward_list": "cpp",
+        "source_location": "cpp",
+        "ranges": "cpp",
+        "shared_mutex": "cpp",
+        "typeindex": "cpp",
+        "valarray": "cpp",
+        "filesystem": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
