@@ -1,20 +1,8 @@
-# Ignorar compilaciones
-/backend/build/
-/client/build/
-
-/*.zip
+build/
 *.o
-*.d
 *.out
 *.log
-*.swp
-*.exe
-.DS_Store
-/backend/bin/
-/backend/obj/
+*.core
+*.dump
+
 .vscode/
-.idea/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
