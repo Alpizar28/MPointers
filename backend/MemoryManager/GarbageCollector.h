@@ -2,16 +2,18 @@
 #define GARBAGECOLLECTOR_H
 
 #include <unordered_map>
+#include <string>
 
 class MemoryBlock;
 
 class GarbageCollector {
+public:
+    GarbageCollector(std::unordered_map<int, MemoryBlock*>& table, const std::string& dumpPath);
+    void collect();
+
 private:
     std::unordered_map<int, MemoryBlock*>& memoryTable;
-
-public:
-    GarbageCollector(std::unordered_map<int, MemoryBlock*>& table);
-    void collect();
+    std::string dumpPath;  // Añade este miembro
 };
 
-#endif
+#endif // GARBAGECOLLECTOR_H

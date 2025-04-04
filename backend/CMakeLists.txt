@@ -8,6 +8,7 @@ add_executable(server
     MemoryManager/MemoryManager.cpp
     MemoryManager/MemoryBlock.cpp
     MemoryManager/GarbageCollector.cpp
+    MemoryManager/MemoryDumper.cpp
 )
 
 include_directories(
