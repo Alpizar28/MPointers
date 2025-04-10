@@ -1,0 +1,41 @@
+# 🔧 Carpetas de build (compilación)
+backend/build/
+client/build/
+backend/bin/
+backend/obj/
+
+# 🔧 Archivos intermedios de compilación
+*.o
+*.d
+*.out
+*.exe
+*.so
+*.a
+
+# 📝 Archivos de usuario y sesión (Visual Studio, IDEs)
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# 📦 Archivos temporales y del sistema
+*.log
+*.swp
+.DS_Store
+Thumbs.db
+
+# 📁 Archivos comprimidos
+*.zip
+*.tar
+*.gz
+*.7z
+
+# 🧪 Dumps de memoria (generados automáticamente)
+backend/dumps/
+*.dump
+
+# No incluir las librerías embebidas
+backend/crow/
+client/cpr/
